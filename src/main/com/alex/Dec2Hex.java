@@ -56,6 +56,6 @@ class Dec2Hex {
       decimalValue = decimalValue / 16;
     }
 
-    return hexadecimal;
+    return hexadecimal.toString();
   }
 }
