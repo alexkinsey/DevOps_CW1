@@ -20,5 +20,5 @@ public class Dec2HexTestRunner {
 
     System.out.println("Check 100 = 64")
     assert "64".equals(Dec2Hex.decimalToHex(100)) : "Expected 64, but got " + Dec2Hex.decimalToHex(100);
-}
+  }
 }
