@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 class Dec2Hex {
 
+  public static int decimalValue;
+
   public static void main(String args[]) {
     if (args.length != 1) {
       System.out.println(
@@ -10,10 +12,8 @@ class Dec2Hex {
       System.exit(1);
     }
 
-    int decimalValue;
-
     try {
-      int decimalValue = Integer.parseInt(args[0]);
+      decimalValue = Integer.parseInt(args[0]);
     } catch (NumberFormatException e) {
       System.out.println(
         "Error: Please enter a valid decimal number to be processed."
