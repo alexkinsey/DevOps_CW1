@@ -15,7 +15,7 @@ public class Dec2HexTestRunner {
     System.out.println("Testing no arguments...");
     testNoArguments();
 
-    System.out.println("All tests passed!");
+    System.out.println("All tests passed!\n");
   }
 
   static void testConvertToHex() {
