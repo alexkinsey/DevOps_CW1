@@ -1,4 +1,4 @@
-package com.alex;
+package numericconversion;
 
 class Dec2Hex {
 
