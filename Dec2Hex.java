@@ -1,16 +1,16 @@
-import java.util.Scanner;
+package com.alex;
 
 class Dec2Hex {
 
-  public static int decimalValue;
-
-  public static void main(String args[]) {
+  public static void main(String[] args) {
     if (args.length != 1) {
       System.out.println(
         "Error: Please enter one decimal number to be processed."
       );
       System.exit(1);
     }
+
+    int decimalValue = 0;
 
     try {
       decimalValue = Integer.parseInt(args[0]);
@@ -21,7 +21,7 @@ class Dec2Hex {
       System.exit(1);
     }
 
-    char ch[] = {
+    char[] ch = {
       '0',
       '1',
       '2',
@@ -47,7 +47,7 @@ class Dec2Hex {
 
     while (decimalValue != 0) {
       rem = decimalValue % 16;
-      hexadecimal = ch[rem] + hexadecimal;
+      hexadecimal.insert(0, ch[rem]);
       decimalValue = decimalValue / 16;
     }
 
