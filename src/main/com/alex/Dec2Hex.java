@@ -14,13 +14,17 @@ class Dec2Hex {
 
     try {
       decimalValue = Integer.parseInt(args[0]);
+      String hexadecimal = decimalToHexadecimal(decimalValue);
+      System.out.println("Hexadecimal representation is: " + hexadecimal);
     } catch (NumberFormatException e) {
       System.out.println(
         "Error: Please enter a valid decimal number to be processed."
       );
       System.exit(1);
     }
+  }
 
+  public static String decimalToHexadecimal(int decimalValue) {
     char[] ch = {
       '0',
       '1',
@@ -52,6 +56,6 @@ class Dec2Hex {
       decimalValue = decimalValue / 16;
     }
 
-    System.out.println("Hexadecimal representation is: " + hexadecimal);
+    return hexadecimal;
   }
 }
