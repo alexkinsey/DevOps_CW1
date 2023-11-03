@@ -11,6 +11,11 @@ public class Dec2Hex {
 
     try {
       decimalValue = Integer.parseInt(args[0]);
+      
+      if (decimalValue < 0) {
+        throw new IllegalArgumentException("Error: Please enter a positive decimal number to be processed.");
+      }
+
       String hexadecimal = decimalToHex(decimalValue);
       System.out.println("Hexadecimal representation is: " + hexadecimal);
     } catch (NumberFormatException e) {

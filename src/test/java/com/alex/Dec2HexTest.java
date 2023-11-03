@@ -53,7 +53,7 @@ public class Dec2HexTest {
     );
 
     assertEquals(
-      "Error: Please enter a valid decimal number to be processed.",
+      "Error: Please enter a positive decimal number to be processed.",
       exception.getMessage()
     );
   }
