@@ -6,7 +6,7 @@ public class Dec2HexTestRunner {
     }
 
     static void testConvertToHex() {
-        String result = Dec2Hex.convertToHex(255);
+        String result = Dec2Hex.decimalToHex(255);
         assert "FF".equals(result) : "Expected FF, but got " + result;
     }
 }

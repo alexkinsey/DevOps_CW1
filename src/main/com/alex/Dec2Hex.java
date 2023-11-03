@@ -14,7 +14,7 @@ public class Dec2Hex {
 
     try {
       decimalValue = Integer.parseInt(args[0]);
-      String hexadecimal = decimalToHexadecimal(decimalValue);
+      String hexadecimal = decimalToHex(decimalValue);
       System.out.println("Hexadecimal representation is: " + hexadecimal);
     } catch (NumberFormatException e) {
       System.out.println(
@@ -24,7 +24,7 @@ public class Dec2Hex {
     }
   }
 
-  public static String decimalToHexadecimal(int decimalValue) {
+  public static String decimalToHex(int decimalValue) {
     char[] ch = {
       '0',
       '1',
