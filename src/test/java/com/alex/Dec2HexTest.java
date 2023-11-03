@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 
 public class Dec2HexTest {
 
@@ -14,9 +14,9 @@ public class Dec2HexTest {
   private PrintStream originalOut;
 
   @BeforeEach
-  public void setUp() {
-    originalOut = System.out;
+  public void setUp() throws Exception {
     outContent = new ByteArrayOutputStream();
+    originalOut = System.out;
     System.setOut(new PrintStream(outContent));
   }
 
