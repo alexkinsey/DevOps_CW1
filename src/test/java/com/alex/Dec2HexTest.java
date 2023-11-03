@@ -6,10 +6,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
-private class Dec2HexTest {
+public class Dec2HexTest {
 
   @Test
-  private void testConvertToHex() {
+  public void testConvertToHex() {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
@@ -45,7 +45,7 @@ private class Dec2HexTest {
   }
 
   @Test
-  private void testNoArguments() {
+  public void testNoArguments() {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
@@ -66,7 +66,7 @@ private class Dec2HexTest {
   }
 
   @Test
-  private void testNoneDecimalArgument() {
+  public void testNoneDecimalArgument() {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
