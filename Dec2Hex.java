@@ -1,11 +1,23 @@
 import java.util.Scanner;
 
 class Dec2Hex {
-
-  public static int Arg1;
-
   public static void main(String args[]) {
-    Arg1 = Integer.parseInt(args[0]);
+    if (args.length != 1) {
+      System.out.println(
+        "Error: Please enter one decimal number to be processed."
+      );
+      System.exit(1);
+    }
+
+    try {
+      int decimalValue = Integer.parseInt(args[0]);
+    } catch (NumberFormatException e) {
+      System.out.println(
+        "Error: Please enter a valid decimal number to be processed."
+      );
+      System.exit(1);
+    }
+
     char ch[] = {
       '0',
       '1',
@@ -24,15 +36,14 @@ class Dec2Hex {
       'E',
       'F',
     };
-    int rem, num;
-    num = Arg1;
+    int rem;
     String hexadecimal = "";
-    System.out.println("Converting the Decimal Value " + num + " to Hex...");
+    System.out.println("Converting the Decimal Value " + decimalValue + " to Hex...");
 
-    while (num != 0) {
-      rem = num % 16;
+    while (decimalValue != 0) {
+      rem = decimalValue % 16;
       hexadecimal = ch[rem] + hexadecimal;
-      num = num / 16;
+      decimalValue = decimalValue / 16;
     }
 
     System.out.println("Hexadecimal representation is: " + hexadecimal);
