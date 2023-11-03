@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 class Dec2Hex {
+
   public static void main(String args[]) {
     if (args.length != 1) {
       System.out.println(
@@ -8,6 +9,8 @@ class Dec2Hex {
       );
       System.exit(1);
     }
+
+    int decimalValue;
 
     try {
       int decimalValue = Integer.parseInt(args[0]);
@@ -38,7 +41,9 @@ class Dec2Hex {
     };
     int rem;
     String hexadecimal = "";
-    System.out.println("Converting the Decimal Value " + decimalValue + " to Hex...");
+    System.out.println(
+      "Converting the Decimal Value " + decimalValue + " to Hex..."
+    );
 
     while (decimalValue != 0) {
       rem = decimalValue % 16;
