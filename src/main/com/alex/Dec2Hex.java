@@ -7,7 +7,7 @@ public class Dec2Hex {
       System.out.println(
         "Error: Please enter one decimal number to be processed."
       );
-      System.exit(1);
+      throw new IllegalArgumentException("A single argument is required");
     }
 
     int decimalValue = 0;
@@ -20,7 +20,7 @@ public class Dec2Hex {
       System.out.println(
         "Error: Please enter a valid decimal number to be processed."
       );
-      System.exit(1);
+      throw new IllegalArgumentException("A valid argument is required");
     }
   }
 
