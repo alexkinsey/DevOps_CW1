@@ -54,15 +54,45 @@ public class Dec2HexTestRunner {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
 
+    SecurityManager originalSecurityManager = System.getSecurityManager();
+    System.setSecurityManager(new NoExitSecurityManager());
+
     try {
       Dec2Hex.main(new String[] {});
       assert false : "Expected an exception to be thrown";
-    } catch (IllegalArgumentException e) {
+    } catch (ExitException e) {
+      assert e.status == 1 : "Expected exit status 1, but got " + e.status;
       assert "Error: Please enter one decimal number to be processed.".equals(
           outContent.toString().trim()
         ) : "Expected error message, but got " + outContent.toString();
+    } finally {
+      System.setSecurityManager(originalSecurityManager);
     }
 
     System.setOut(originalOut);
+  }
+
+  static class NoExitSecurityManager extends SecurityManager {
+
+    @Override
+    public void checkExit(int status) {
+      throw new ExitException(status);
+    }
+
+    @Override
+    public void checkPermission(Permission perm) {}
+
+    @Override
+    public void checkPermission(Permission perm, Object context) {}
+  }
+
+  static class ExitException extends SecurityException {
+
+    public final int status;
+
+    public ExitException(int status) {
+      super("There is no escape!");
+      this.status = status;
+    }
   }
 }
