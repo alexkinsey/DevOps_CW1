@@ -24,24 +24,27 @@ public class Dec2HexTestRunner {
     System.setOut(new PrintStream(outContent));
 
     Dec2Hex.main(new String[] { "255" });
-    assert "FF".equals(outContent.toString().trim()) : "Expected FF, but got " +
-    outContent.toString();
+    assert "Converting the Decimal Value 255 to Hex...\nHexadecimal representation is: FF".equals(
+        outContent.toString().trim()
+      ) : "Expected FF, but got " + outContent.toString();
 
     outContent.reset();
     Dec2Hex.main(new String[] { "0" });
-    assert "0".equals(outContent.toString().trim()) : "Expected 0, but got " +
-    outContent.toString();
+    assert "Converting the Decimal Value 0 to Hex...\nHexadecimal representation is: 0".equals(
+        outContent.toString().trim()
+      ) : "Expected 0, but got " + outContent.toString();
 
     outContent.reset();
     Dec2Hex.main(new String[] { "2147483647" });
-    assert "7FFFFFFF".equals(
+    assert "Converting the Decimal Value 2147483647 to Hex...\nHexadecimal representation is: 7FFFFFFF".equals(
         outContent.toString().trim()
       ) : "Expected 7FFFFFFF, but got " + outContent.toString();
 
     outContent.reset();
     Dec2Hex.main(new String[] { "100" });
-    assert "64".equals(outContent.toString().trim()) : "Expected 64, but got " +
-    outContent.toString();
+    assert "Converting the Decimal Value 100 to Hex...\nHexadecimal representation is: 64".equals(
+        outContent.toString().trim()
+      ) : "Expected 64, but got " + outContent.toString();
 
     System.setOut(originalOut);
   }
