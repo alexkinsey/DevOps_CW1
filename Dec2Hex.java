@@ -40,7 +40,8 @@ class Dec2Hex {
       'F',
     };
     int rem;
-    String hexadecimal = "";
+    StringBuilder hexadecimal = new StringBuilder();
+
     System.out.println(
       "Converting the Decimal Value " + decimalValue + " to Hex..."
     );
