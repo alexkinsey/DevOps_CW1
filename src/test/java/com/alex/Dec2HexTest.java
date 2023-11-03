@@ -6,10 +6,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
-public class Dec2HexTest {
+private class Dec2HexTest {
 
   @Test
-  public void testConvertToHex() {
+  private void testConvertToHex() {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
@@ -45,7 +45,7 @@ public class Dec2HexTest {
   }
 
   @Test
-  public void testNoArguments() {
+  private void testNoArguments() {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
@@ -58,7 +58,28 @@ public class Dec2HexTest {
     );
 
     assertEquals(
-      "A single argument is required",
+      "Error: Please enter one decimal number to be processed.",
+      exception.getMessage()
+    );
+
+    System.setOut(originalOut);
+  }
+
+  @Test
+  private void testNoneDecimalArgument() {
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
+
+    Exception exception = assertThrows(
+      IllegalArgumentException.class,
+      () -> {
+        Dec2Hex.main(new String[] {"Ten"});
+      }
+    );
+
+    assertEquals(
+      "Error: Please enter a valid decimal number to be processed.",
       exception.getMessage()
     );
 

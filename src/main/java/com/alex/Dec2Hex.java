@@ -4,10 +4,7 @@ public class Dec2Hex {
 
   public static void main(String[] args) {
     if (args.length != 1) {
-      System.out.println(
-        "Error: Please enter one decimal number to be processed."
-      );
-      throw new IllegalArgumentException("A single argument is required");
+      throw new IllegalArgumentException("Error: Please enter one decimal number to be processed.");
     }
 
     int decimalValue = 0;
@@ -17,10 +14,7 @@ public class Dec2Hex {
       String hexadecimal = decimalToHex(decimalValue);
       System.out.println("Hexadecimal representation is: " + hexadecimal);
     } catch (NumberFormatException e) {
-      System.out.println(
-        "Error: Please enter a valid decimal number to be processed."
-      );
-      throw new IllegalArgumentException("A valid argument is required");
+      throw new IllegalArgumentException("Error: Please enter a valid decimal number to be processed.");
     }
   }
 
