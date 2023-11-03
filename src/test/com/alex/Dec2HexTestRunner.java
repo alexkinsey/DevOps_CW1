@@ -1,3 +1,5 @@
+import com.alex.Dec2Hex;
+
 public class Dec2HexTestRunner {
     public static void main(String[] args) {
         testConvertToHex();
