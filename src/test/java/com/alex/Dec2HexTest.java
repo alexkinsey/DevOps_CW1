@@ -60,7 +60,7 @@ public class Dec2HexTest {
 
   @Test
   public void testLargeDecimalValue() {
-    Dec2Hex.main(new String[] { "2147483647" }); // Maximum integer value
+    Dec2Hex.main(new String[] { "2147483647" }); // Maximum integer value.
     assertEquals(
       "Converting the Decimal Value 2147483647 to Hex...\nHexadecimal representation is: 7FFFFFFF",
       outContent.toString().trim()
