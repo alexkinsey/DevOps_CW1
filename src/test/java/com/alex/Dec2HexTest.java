@@ -58,7 +58,7 @@ public class Dec2HexTest {
     );
 
     assertEquals(
-      "Error: Please enter one decimal number to be processed.",
+      "A single argument is required",
       exception.getMessage()
     );
 
