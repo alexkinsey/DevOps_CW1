@@ -8,40 +8,76 @@ import org.junit.jupiter.api.Test;
 
 public class Dec2HexTest {
 
-  @Test
-  public void testConvertToHex() {
-    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    PrintStream originalOut = System.out;
-    System.setOut(new PrintStream(outContent));
+  private ByteArrayOutputStream outContent;
+  private PrintStream originalOut;
 
+  @BeforeEach
+  public void setUp() throws Exception {
+    outContent = new ByteArrayOutputStream();
+    originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
+  }
+
+  @AfterEach
+  public void tearDown() throws Exception {
+    System.setOut(originalOut);
+  }
+
+  @Test
+  public void testConvert255ToHex() {
     Dec2Hex.main(new String[] { "255" });
     assertEquals(
       "Converting the Decimal Value 255 to Hex...\nHexadecimal representation is: FF",
       outContent.toString().trim()
     );
+  }
 
-    outContent.reset();
+  @Test
+  public void testConvert0ToHex() {
     Dec2Hex.main(new String[] { "0" });
     assertEquals(
       "Converting the Decimal Value 0 to Hex...\nHexadecimal representation is: 0",
       outContent.toString().trim()
     );
+  }
 
-    outContent.reset();
-    Dec2Hex.main(new String[] { "2147483647" });
+  @Test
+  public void testNegativeDecimalValue() {
+    Exception exception = assertThrows(
+      IllegalArgumentException.class,
+      () -> {
+        Dec2Hex.main(new String[] { "-255" });
+      }
+    );
+
+    assertEquals(
+      "Error: Please enter a valid decimal number to be processed.",
+      exception.getMessage()
+    );
+  }
+
+  @Test
+  public void testLargeDecimalValue() {
+    Dec2Hex.main(new String[] { "2147483647" }); // Maximum integer value
     assertEquals(
       "Converting the Decimal Value 2147483647 to Hex...\nHexadecimal representation is: 7FFFFFFF",
       outContent.toString().trim()
     );
+  }
 
-    outContent.reset();
-    Dec2Hex.main(new String[] { "100" });
-    assertEquals(
-      "Converting the Decimal Value 100 to Hex...\nHexadecimal representation is: 64",
-      outContent.toString().trim()
+  @Test
+  public void testNonIntegerValue() {
+    Exception exception = assertThrows(
+      IllegalArgumentException.class,
+      () -> {
+        Dec2Hex.main(new String[] { "10.5" });
+      }
     );
 
-    System.setOut(originalOut);
+    assertEquals(
+      "Error: Please enter a valid decimal number to be processed.",
+      exception.getMessage()
+    );
   }
 
   @Test
@@ -66,7 +102,7 @@ public class Dec2HexTest {
   }
 
   @Test
-  public void testNoneDecimalArgument() {
+  public void testNonDecimalArgument() {
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
@@ -74,7 +110,7 @@ public class Dec2HexTest {
     Exception exception = assertThrows(
       IllegalArgumentException.class,
       () -> {
-        Dec2Hex.main(new String[] {"Ten"});
+        Dec2Hex.main(new String[] { "Ten" });
       }
     );
 
