@@ -50,6 +50,10 @@ public class Dec2Hex {
       "Converting the Decimal Value " + decimalValue + " to Hex..."
     );
 
+    if (decimalValue == 0) {
+      return "0";
+    }
+
     while (decimalValue != 0) {
       rem = decimalValue % 16;
       hexadecimal.insert(0, ch[rem]);
