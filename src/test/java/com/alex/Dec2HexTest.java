@@ -15,6 +15,7 @@ public class Dec2HexTest {
 
   @BeforeEach
   public void setUp() {
+    originalOut = System.out;
     outContent = new ByteArrayOutputStream();
     System.setOut(new PrintStream(outContent));
   }
