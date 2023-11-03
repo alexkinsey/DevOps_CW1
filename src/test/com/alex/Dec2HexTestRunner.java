@@ -7,7 +7,7 @@ import java.io.PrintStream;
 public class Dec2HexTestRunner {
 
   public static void main(String[] args) {
-    System.out.println("Running tests...");
+    System.out.println("\nRunning tests...");
 
     System.out.println("Testing decimal to hexadecimal conversion...");
     testConvertToHex();
@@ -54,10 +54,14 @@ public class Dec2HexTestRunner {
     PrintStream originalOut = System.out;
     System.setOut(new PrintStream(outContent));
 
-    Dec2Hex.main(new String[] {});
-    assert "Error: Please enter one decimal number to be processed.".equals(
-        outContent.toString().trim()
-      ) : "Expected error message, but got " + outContent.toString();
+    try {
+      Dec2Hex.main(new String[] {});
+      assert false : "Expected an exception to be thrown";
+    } catch (IllegalArgumentException e) {
+      assert "Error: Please enter one decimal number to be processed.".equals(
+          outContent.toString().trim()
+        ) : "Expected error message, but got " + outContent.toString();
+    }
 
     System.setOut(originalOut);
   }
