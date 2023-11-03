@@ -1,30 +1,61 @@
 package com.alex;
 
 import com.alex.Dec2Hex;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class Dec2HexTestRunner {
 
   public static void main(String[] args) {
-    testDecimalToHex();
+    System.out.println("Running tests...");
+
+    System.out.println("Testing decimal to hexadecimal conversion...");
+    testConvertToHex();
+
+    System.out.println("Testing no arguments...");
+    testNoArguments();
+
+    System.out.println("All tests passed!");
   }
 
-  static void testDecimalToHex() {
-    System.out.println("Check 255 = FF");
-    assert "FF".equals(Dec2Hex.decimalToHex(255)) : "Expected FF, but got " +
-    Dec2Hex.decimalToHex(255);
+  static void testConvertToHex() {
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
 
-    System.out.println("Check 0 = 0");
-    assert "0".equals(Dec2Hex.decimalToHex(0)) : "Expected 0, but got " +
-    Dec2Hex.decimalToHex(0);
+    Dec2Hex.main(new String[] { "255" });
+    assert "FF".equals(outContent.toString().trim()) : "Expected FF, but got " +
+    outContent.toString();
 
-    System.out.println("Check max int value = 7FFFFFFF");
+    outContent.reset();
+    Dec2Hex.main(new String[] { "0" });
+    assert "0".equals(outContent.toString().trim()) : "Expected 0, but got " +
+    outContent.toString();
+
+    outContent.reset();
+    Dec2Hex.main(new String[] { "2147483647" });
     assert "7FFFFFFF".equals(
-        Dec2Hex.decimalToHex(Integer.MAX_VALUE)
-      ) : "Expected 7FFFFFFF, but got " +
-    Dec2Hex.decimalToHex(Integer.MAX_VALUE);
+        outContent.toString().trim()
+      ) : "Expected 7FFFFFFF, but got " + outContent.toString();
 
-    System.out.println("Check 100 = 64");
-    assert "64".equals(Dec2Hex.decimalToHex(100)) : "Expected 64, but got " +
-    Dec2Hex.decimalToHex(100);
+    outContent.reset();
+    Dec2Hex.main(new String[] { "100" });
+    assert "64".equals(outContent.toString().trim()) : "Expected 64, but got " +
+    outContent.toString();
+
+    System.setOut(originalOut);
+  }
+
+  static void testNoArguments() {
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
+
+    Dec2Hex.main(new String[] {});
+    assert "Error: Please enter one decimal number to be processed.".equals(
+        outContent.toString().trim()
+      ) : "Expected error message, but got " + outContent.toString();
+
+    System.setOut(originalOut);
   }
 }
