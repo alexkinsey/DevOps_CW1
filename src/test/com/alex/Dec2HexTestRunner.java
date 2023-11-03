@@ -3,6 +3,7 @@ package com.alex;
 import com.alex.Dec2Hex;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.security.Permission;
 
 public class Dec2HexTestRunner {
 
